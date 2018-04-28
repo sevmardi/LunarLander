@@ -2,4 +2,4 @@
 Different kinds of experiments using RL on LunarLander 
 
 # Solutions 
-- Using Keras/Tensorflow implemented Q-Learning algorithm  
+ [x] Using Keras/Tensorflow implemented Q-Learning algorithm  

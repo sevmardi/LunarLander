@@ -1,0 +1,6 @@
+gym 
+tensorflow
+keras-rl
+opencv-python
+Pillow
+
