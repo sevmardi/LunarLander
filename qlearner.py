@@ -64,8 +64,7 @@ class QLearner(BaseAgent):
 
     def learnQ(self, state, action, reward, maxqnew):
         """
-        Apply Q-learning rule:
-            Q(s, a) += alpha * (reward(s, a) + max(Q(s') - Q(s, a))
+        Apply Q-learning rule:  Q(s, a) += alpha * (reward(s, a) + max(Q(s') - Q(s, a))
 
         :param state:   an iterable object representing a state
         :param action:  an iterable object representing an action
