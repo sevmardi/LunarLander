@@ -43,7 +43,7 @@ for run in range(num_runs):
     for episode in range(num_episodes):
         rewards[episode] = agent.train()
         # Check if environment is solved
-        if wrapper.solved(rewards[episode]):
+        if wrapper.solved(rewards[:episode]):
             end_episode = episode
             break
 
