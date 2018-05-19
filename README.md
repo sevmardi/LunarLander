@@ -19,5 +19,8 @@ Coming soon
 ## Running the agents
 Coming soon
 
-# Solutions 
+## Solutions 
  [x] Using Keras/Tensorflow implemented Q-Learning algorithm  
+
+## Logs and Plots 
+Coming soon

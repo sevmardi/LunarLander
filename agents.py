@@ -47,8 +47,60 @@ class BaseAgent(object):
         # Or select an action randomly
         return np.random.choice(len(q))
 
-    def learn(self, *args, **kwargs):
-        raise NotImplementedError("Subclass must implement abstract method")
+    def learn(self):
+        # raise NotImplementedError("Subclass must implement abstract method")
+        return 0.0
+
+
+class DNQAgent(object):
+    """This agent uses DQN for making action decisions with 1-epsilon probability"""
+
+    def __init__(self, name, state_dim, action_dim, epsdecay=0.995,
+                 buffersize=500000, samplesize=32, minsamples=10000,
+                 gamma=0.99, state_norm_file='../params/state-stats.pkl', update_target_freq=600,
+                 nnparams={  # Basic DQN setting
+                     'hidden_layers': [(40, 'relu'), (40, 'relu')],
+                     'loss': 'mse',
+                     'optimizer': Adam(lr=0.00025),
+                     'target_network': False}):
+        """Accentps a unique agent name, number of variables in the state, number of actions and parameters of DQN then initialize the agent"""
+        # Unique name for the agent
+        self.name = name
+        # no:of state and action dimensions
+        self.state_dim = state_dim
+        self.action_dim = action_dim
+        # Create buffer for experience replay
+        self.memory = Memory(maxsize=buffersize)
+        # Set initial epsilon to 1.0
+        self.eps = 1.0
+        # Minimum number of samples in the buffer to start learning
+        self.minsamples = minsamples
+        # Number of random samples to be drawn from the buffer for experience
+        # replay
+        self.samplesize = samplesize
+        # Decay factor for epsilon for each episode
+        self.epsdecay = epsdecay
+        # Discount factor for Q learning
+        self.gamma = gamma
+        # Dictionary of DQN parameters
+        self.nnparams = nnparams
+        # Create the base predictor neural network
+        # and if required the target neural network too.
+        self._create_nns_()
+        # Load the state variable normalizers from pickle file if exists
+        self._load_state_normalizer_(state_norm_file)
+        # Update frequency of the target network in number of steps
+        self.update_target_freq = update_target_freq
+        # Boolean flag indicating whether the agent started learning or not
+        self.started_learning = False
+        # Keeps a count of number of steps.
+        self.steps = 0
+
+        def _load_state_normalizer_(self, state_norm_file):
+            self.mean = np.zeros(self.state_dim)
+            self.std = np.ones(self.state_dim)
+
+            return None
 
 
 class MyAgent(BaseAgent):

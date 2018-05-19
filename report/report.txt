@@ -1,9 +1,40 @@
 
+## Abstract
+-----------
 
+
+## Introduction
+--------------
+
+
+## Problem Description
+-----------------------
+
+
+## Background
+-------------
+
+
+## Approach
+------------
+
+
+## Experiments
+--------------
+
+
+## Conclusions
+---------------
+
+
+## Future work
+--------------
 
 
 
 ## Ref
+------
+
 [1] Zhangbo Liu.: A Guided Genetic Algorithm for the Planning in Lunar Lander Games
 [2] Barry David Nichols.: Reinforcement learning in continuous state-and action-space
 [3] H. Hans.: Reinforcement Learning in Continuous State Spaces 
