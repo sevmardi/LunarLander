@@ -8,16 +8,20 @@ In this paper our aim is to solve the self-taught lunar lander task with reinfor
 --------------
 The orginal lunar lander task requires an agent to perform soft landigs on designated landing zones with controlable thrust and rotation. It was first introduced in 1979 in a game developed by Atari, Inc. and became a wide spread game concept. Recently the same idea and concept was used on real world rockets such as Falcon 9 rocket by SpaceX, which we somehow drew inspiration and elicited us to invistage further. Instead of using traditioal approache, we wanted to study whether there were methods other than explicitly programmed control algorithms. 
 
-One of methods and core idea of this paper is using reinforcement learning, which is in its trun capable of learning through unknown dynamics of an environment. In the reinfrocement learning per
+One of methods and core idea of this paper is using reinforcement learning, which is in its trun capable of learning through unknown dynamics of an environment. In the reinfrocement learning perspective, the lunar lander task has a continuos state space and the agent must learn accurate control policices to perfrom a successful landing. Most conventional reinforcement learning algorithms need to either iterate over states and store expceted reward values for actions at each state or utilize linear regression or similar algorithms to approximate these values. These characterticts kept them from learning effectly from high dimensional and continiuos inputs and complex policies[1]. 
+
+However, recent breakthroughts in deep learning, which strengthenned the capability of neural networks, has contributed significantly to reinforcement learning applications. Neural networks serves as a regression model for learning expected reward values as well as method of dimensionality reduction for observed features of states[2]. We will try this option and clarify more about this in the expermints section.
 
 
 ## Related Work
 ---------------
+There are several reinforcement learning related approahces to the lunar lander problem. Genetic algorithms is one of the way to achieve a simpliefed version of the task[3]. Another more complex method is guided policy serach, which is successful in learning mechanics of robots[4]. However, no pas works using reinforcement learning can solve this task thoroughly and effectivly. 
 
 
 
 ## Problem Description
 -----------------------
+
 
 
 ## Background
