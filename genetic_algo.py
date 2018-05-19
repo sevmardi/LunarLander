@@ -10,9 +10,9 @@ import plotly.graph_objs as go
 n_generations = 0
 plot_data = []
 final_games = 10
-score_requirement = 50
+score_requirement = 200
 population_size = 100 
-generation_limit = 100  # Max number of generations
+generation_limit = 5000  # Max number of generations
 steps_limit = 300 # Max number of steps in a game
 sigma = 0.1  # Noise standard deviation
 alpha = 0.0005  # Learning rate
@@ -71,9 +71,9 @@ def genetic_algorithm():
 		if gen_mean >= score_requirement:
 			break
 	
-	print("Running final games")
-	for i in range(final_games):
-		print("episode {}, score: {}".format(i, run_episode(env, W, True)))
+	# print("Running final games")
+	# for i in range(final_games):
+	# 	print("episode {}, score: {}".format(i, run_episode(env, W, True)))
 	return
 
 def run_episode(env, weight, render = False):
