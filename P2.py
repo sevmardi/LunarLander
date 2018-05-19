@@ -3,7 +3,10 @@ import time
 import csv
 from collections import deque
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+
 import gym
 import numpy as np
 
@@ -159,7 +162,8 @@ def graph_rewards_vs_alphas(file, iter):
     graph_plot = df.plot(linewidth=0.75)
     graph_plot.set_xlabel('Generations')
     graph_plot.set_ylabel('Reward')
-    plt.show()
+    # plt.show()
+    plt.save()
 
 
 
