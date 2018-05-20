@@ -1,7 +1,7 @@
 
 ## Abstract
 -----------
-In this paper our aim is to solve the self-taught lunar lander task with reinforcement learning agent with no prior knowledge of control. The goal for the agent is to learn the dynamics of the lunar lander and perform a soft landing on a designated landing zone. The agent's learning process is completely automated and unsupervised, merely based on observable reward from its surroundings (environment). We decomposed the task into two parts: the stable control task and the direct landing task and created simulated environments for each task. We then worked and improvised with Policy Gradient algorithm to train our agents. Our experiments showed it is possible to solve the self-taught lunar lander task with this approach. Furthermore, we want to investigate more general approaches to solve self-taught control policies in the future. 
+In this paper our aim is to solve the self-taught lunar lander task with reinforcement learning agent with no prior knowledge of control. The goal for the agent is to learn the dynamics of the lunar lander and perform a soft landing on a designated landing zone. The agent's learning process is completely automated and unsupervised, merely based on observable reward from its surroundings (environment). We decomposed the task into two parts: the stable control task and the direct landing task and created simulated environments for each task. We then worked and improvised with Policy Gradient algorithm to train our agents. In the experiments section we will cover some of our results and show you that it is possible to solve the self-taught lunar lander task with this approach. Furthermore, we want to investigate more general approaches to solve self-taught control policies in the future. 
 
 
 ## Introduction
@@ -28,12 +28,22 @@ function approximation. It usually faces the curse of di-
 mensionality when using discretization. With function
 approximation it is said to be able to alleviate such a problem but might be stuck into certain local optima.\\
 
+\noindent IN section 2 we briefly tak about the related work such as reinforcement learning in continuous state action space and using reinforcement learning along with genetic algorithm. The remainder of this paper is organized as follows. In section 3 we discuss the problem that we are about present a solution. In section 4 we describe the Lunar Lander
+game and its history. In section 5 and 6 we talk about approach and experiments and finally draw conclusion and discuss future work. 
+
 
 
 
 ## Related Work
 ---------------
-There are several reinforcement learning related approaches to the lunar lander problem. Genetic algorithms is one of the way to achieve a simplified version of the task[3]. Another more complex method is guided policy search, which is successful in learning mechanics of robots[4]. However, no pas works using reinforcement learning can solve this task thoroughly and effectively.
+There are several reinforcement learning related approaches to the lunar lander problem. Genetic algorithms is one of the way to achieve a simplified version of the task[3]. Another more complex method is guided policy search, which is successful in learning mechanics of robots[4]. However, no past works using reinforcement learning can solve this task thoroughly and effectively. The idea of using reinforcement learning to solve continuous state-action space problem has been investigated by many researchers. Some of the  well known benchmark problems in the reinforcement learning domain such as Mountain Car (Moore and Atkeson 1995), Cart-Pole (Barto et al. 1983)
+and Acrobot (Boone 1997). Other researches on combining the advantages of GA and
+TD-based reinforcement learning have been proposed in
+(Chiang et al. 1997), (Lin and Jou 1999). However, both
+of them use gradient decent learning method which is
+complex and the learning speed is always too slow to
+achieve the optimum solution.
+
 
 
 ## Problem Description
@@ -41,7 +51,7 @@ There are several reinforcement learning related approaches to the lunar lander 
 The aim of the project is to build a learning agent to navigate a space vehicle from a starting point in space to the landing pod without crushing. The environment is called LunarLander-v2 which is provided by OpenAI's gym python package. At each step, the agent is provided with the current state of the space vehicle s which is a 8 dimensional vector of reals \(R^8\) and the agent is allowed to make one of the the four possible actions {do nothing, fire left orientation engine, fire main engine, fire right orientation engine} in one step. On making an action \(a\), the the agent gets a reward \(r\) and also get to know the new state of the vehicle \(s'\). If the vehicle moves from the top of the screen to reach landing pad at zero speed, it gets reward in the range \([100, 140]\). The vehicle is permitted to land outside the landing pad, but is penalized for such cases. The episode finishes if the vehicle crashes(gets additional reward of -100) or comes to rest(gets additional reward of +100). There is no restriction on the amount of fuel used. The agent is supposed to learn a policy \(\pi(s)\) that decides what action it must make at a given current state \(s\) by going over the past experiences defined by the tuple \(< s, a, r, s 0 >\).\\  
 
 \noindent The objective of this project is two fold - Create an agent such that it 1) maximize the expected total reward per episode with minimum variance in test trials.  And 2) minimize the expected episode length in test trials.
-The task at hand is a typical reinforcement learning problem but with a discrete state space. Q-learning is popular model-free strategy to solve a reinforcement learning problem with discrete state and action spaces. The project uses a skeleton version of recent Q-learning  algorithm called Deep Q Network learning (DQN). which uses a neural network to approximate the state-value function \(Q ∗ (s, a)\) where \(s\) is the current state and \(a\) is the action performed.\\  
+The task at hand is a typical reinforcement learning problem but with a discrete state space. Q-learning is popular model-free strategy to solve a reinforcement learning problem with discrete state and action spaces. The project uses a skeleton version of recent Q-learning  algorithm called Deep Q Network learning (DQN)[6]. which uses a neural network to approximate the state-value function \(Q ∗ (s, a)\) where \(s\) is the current state and \(a\) is the action performed.\\  
 
 
 
@@ -85,3 +95,10 @@ approximation by using series of neural networks which had the state space as th
 [3] H. Hans.: Reinforcement Learning in Continuous State Spaces 
 [4] R. Shariff, T. Dick.: Lunar Lander: A Continuous-Action Case Study for Policy-Gradient Actor-Critic Algorithms
 [5] https://gym.openai.com
+[6] Mnih, Volodymyr, et al. ”Human-level control through deep reinforcement learning.” Nature 518.7540
+(2015): 529-533.
+[7] S.   Levine and P. Abbeel.   Learning   Neural   Network   Policies   with   Guided   Policy  
+Search under Unknown Dynamics. In ​
+NIPS 2014. 
+[8] Z.   Liu.   A   Guided   Genetic   Algorithm   for   the   Planning   in   Lunar   Lander   Games.   In  
+GAME­ON'2006.
